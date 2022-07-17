@@ -272,3 +272,24 @@ mysql> select count(contactType) from address_book where contactType='Friends';
 |                  3 |
 +--------------------+
 1 row in set (0.00 sec)
+
+---------------------------------------------------------------------------------
+UC11-->Ability to add person to both Friend and Family
+------------------------------------------------------------------------------------
+mysql> insert into address_book(firstName,lastName,address,city,state,email,zipCode,Phone_number,bookname,contactType)values
+    -> ('Dinesh','Kumar','Uravakonda','Penugonda','Andhra','dines@gmail.com','575682','10594220','Sr','Family');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from address_book;
++-----------+----------+------------+-------------+------------+--------------------+---------+--------------+----------+-------------+
+| firstName | lastName | address    | city        | state      | email              | zipCode | phone_number | bookName | contactType |
++-----------+----------+------------+-------------+------------+--------------------+---------+--------------+----------+-------------+
+| Aviligond | Srinivas | Bks        | Anantapur   | Andhra     | Sri@gmail.com      |  515701 |    891958462 | As       | Family      |
+| Sai       | Kumar    | Ktp        | Dharmavaram | Andhra     | Sai@gmail.com      |  575682 |     90594610 | As       | friends     |
+| Sri       | Bhargav  | Mumbai     | Mumbai      | Maharastra | Bharagav@gmail.com |  556856 |    123456788 | SR       | Bussiness   |
+| Dinesh    | Kumar    | Uravakonda | Penugonda   | Andhra     | dines@gmail.com    |  575682 |     10594220 | SR       | Friends     |
+| Chandra   | Setti    | ReddiPalli | Tadiapthri  | Andhra     | sumath@gmail.com   |   87965 |     54656586 | As       | Bussiness   |
+| Javeed    | Ahamad   | Anantapur  | Chennai     | TamilNadu  | saif@gmail.com     |  849563 |     89756436 | SR       | Friends     |
+| Dinesh    | Kumar    | Uravakonda | Penugonda   | Andhra     | dines@gmail.com    |  575682 |     10594220 | Sr       | Family      |
++-----------+----------+------------+-------------+------------+--------------------+---------+--------------+----------+-------------+
+7 rows in set (0.00 sec)
