@@ -56,3 +56,22 @@ mysql> insert into address_book(firstName,lastName,address,city,state,email,zipC
 | Sai       | Kumar    | Ktp     | Dharmavaram | Andhra     | Sai@gmail.com      |  575682 |     90594610 |
 +-----------+----------+---------+-------------+------------+--------------------+---------+--------------+
 3 rows in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------
+UC4-->Edit existing Contact with using their name
+----------------------------------------------------------------------------------------------------
+mysql> update address_book set firstName='Srinivas' where lastName='Bhargav';
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from address_book;
+
++-----------+----------+---------+-------------+------------+--------------------+---------+--------------+
+| firstName | lastName | address | city        | state      | email              | zipCode | phone_number |
++-----------+----------+---------+-------------+------------+--------------------+---------+--------------+
+| Srinivas  | Bhargav  | Mumbai  | Mumbai      | Maharastra | Bharagav@gmail.com |  556856 |    123456788 |
+| Aviligond | Srinivas | Bks     | Anantapur   | Andhra     | Sri@gmail.com      |  515701 |    891958462 |
+| Sai       | Kumar    | Ktp     | Dharmavaram | Andhra     | Sai@gmail.com      |  575682 |     90594610 |
++-----------+----------+---------+-------------+------------+--------------------+---------+--------------+
+3 rows in set (0.00 sec)
