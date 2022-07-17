@@ -145,3 +145,28 @@ mysql> select count(state) from address_book;
 |            2 |
 +--------------+
 1 row in set (0.01 sec)
+
+---------------------------------------------------------------------------------
+UC8-->Sorted Alphabetically by person name
+---------------------------------------------------------------------------------
+mysql> select * from address_book;
+
++-----------+----------+---------+-------------+------------+--------------------+---------+--------------+
+| firstName | lastName | address | city        | state      | email              | zipCode | phone_number |
++-----------+----------+---------+-------------+------------+--------------------+---------+--------------+
+| Aviligond | Srinivas | Bks     | Anantapur   | Andhra     | Sri@gmail.com      |  515701 |    891958462 |
+| Sai       | Kumar    | Ktp     | Dharmavaram | Andhra     | Sai@gmail.com      |  575682 |     90594610 |
+| Sri       | Bhargav  | Mumbai  | Mumbai      | Maharastra | Bharagav@gmail.com |  556856 |    123456788 |
++-----------+----------+---------+-------------+------------+--------------------+---------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from address_book order by lastName;
+
++-----------+----------+---------+-------------+------------+--------------------+---------+--------------+
+| firstName | lastName | address | city        | state      | email              | zipCode | phone_number |
++-----------+----------+---------+-------------+------------+--------------------+---------+--------------+
+| Sri       | Bhargav  | Mumbai  | Mumbai      | Maharastra | Bharagav@gmail.com |  556856 |    123456788 |
+| Sai       | Kumar    | Ktp     | Dharmavaram | Andhra     | Sai@gmail.com      |  575682 |     90594610 |
+| Aviligond | Srinivas | Bks     | Anantapur   | Andhra     | Sri@gmail.com      |  515701 |    891958462 |
++-----------+----------+---------+-------------+------------+--------------------+---------+--------------+
+3 rows in set (0.00 sec)
