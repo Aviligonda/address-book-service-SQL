@@ -170,3 +170,78 @@ mysql> select * from address_book order by lastName;
 | Aviligond | Srinivas | Bks     | Anantapur   | Andhra     | Sri@gmail.com      |  515701 |    891958462 |
 +-----------+----------+---------+-------------+------------+--------------------+---------+--------------+
 3 rows in set (0.00 sec)
+
+mysql> select lastname,city from address_book order by city;
+
++----------+-------------+
+| lastname | city        |
++----------+-------------+
+| Srinivas | Anantapur   |
+| Kumar    | Dharmavaram |
+| Bhargav  | Mumbai      |
++----------+-------------+
+3 rows in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------
+UC9-->Ability to identify each Address Book with name and Type
+-----------------------------------------------------------------------------------------------------
+mysql> alter table address_book add bookName varchar(10) not null ,add conatctType varchar(30) not null;
+
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe address_book;
+
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| firstName    | varchar(20)  | NO   |     | NULL    |       |
+| lastName     | varchar(20)  | NO   |     | NULL    |       |
+| address      | varchar(100) | NO   |     | NULL    |       |
+| city         | varchar(30)  | NO   |     | NULL    |       |
+| state        | varchar(30)  | NO   |     | NULL    |       |
+| email        | varchar(30)  | NO   |     | NULL    |       |
+| zipCode      | int          | NO   |     | NULL    |       |
+| phone_number | int          | NO   |     | NULL    |       |
+| bookName     | varchar(10)  | NO   |     | NULL    |       |
+| conatctType  | varchar(30)  | NO   |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> select * from address_book;
+
++-----------+----------+------------+-------------+------------+--------------------+---------+--------------+----------+-------------+
+| firstName | lastName | address    | city        | state      | email              | zipCode | phone_number | bookName | conatctType |
++-----------+----------+------------+-------------+------------+--------------------+---------+--------------+----------+-------------+
+| Aviligond | Srinivas | Bks        | Anantapur   | Andhra     | Sri@gmail.com      |  515701 |    891958462 |          |             |
+| Sai       | Kumar    | Ktp        | Dharmavaram | Andhra     | Sai@gmail.com      |  575682 |     90594610 |          |             |
+| Sri       | Bhargav  | Mumbai     | Mumbai      | Maharastra | Bharagav@gmail.com |  556856 |    123456788 |          |             |
+| Dinesh    | Kumar    | Uravakonda | Penugonda   | Andhra     | dines@gmail.com    |  575682 |     10594220 |          |             |
+| Chandra   | Setti    | ReddiPalli | Tadiapthri  | Andhra     | sumath@gmail.com   |   87965 |     54656586 |          |             |
+| Irafan    | Ahamad   | Anantapur  | Chennai     | TamilNadu  | saif@gmail.com     |  849563 |     89756436 |          |             |
++-----------+----------+------------+-------------+------------+--------------------+---------+--------------+----------+-------------+
+
+
+mysql> update address_book set bookname='SR',ContactType='Friends' where firstname='Dinesh' or firstname='Javeed';
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update address_book set bookname='SR',ContactType='Bussiness' where firstname='sri';
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+mysql> select *  from address_book;
++-----------+----------+------------+-------------+------------+--------------------+---------+--------------+----------+-------------+
+| firstName | lastName | address    | city        | state      | email              | zipCode | phone_number | bookName | contactType |
++-----------+----------+------------+-------------+------------+--------------------+---------+--------------+----------+-------------+
+| Aviligond | Srinivas | Bks        | Anantapur   | Andhra     | Sri@gmail.com      |  515701 |    891958462 | As       | Family      |
+| Sai       | Kumar    | Ktp        | Dharmavaram | Andhra     | Sai@gmail.com      |  575682 |     90594610 | As       | Family      |
+| Sri       | Bhargav  | Mumbai     | Mumbai      | Maharastra | Bharagav@gmail.com |  556856 |    123456788 | SR       | Bussiness   |
+| Dinesh    | Kumar    | Uravakonda | Penugonda   | Andhra     | dines@gmail.com    |  575682 |     10594220 | SR       | Friends     |
+| Chandra   | Setti    | ReddiPalli | Tadiapthri  | Andhra     | sumath@gmail.com   |   87965 |     54656586 | As       | Bussiness   |
+| Javeed    | Ahamad   | Anantapur  | Chennai     | TamilNadu  | saif@gmail.com     |  849563 |     89756436 | SR       | Friends     |
++-----------+----------+------------+-------------+------------+--------------------+---------+--------------+----------+-------------+
+6 rows in set (0.00 sec)
